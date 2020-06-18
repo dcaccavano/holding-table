@@ -1,3 +1,10 @@
 <table>
   <HoldingHeader @headerData={{@data.columns}} />
+  <tbody>
+    {{#each this.filteredHoldings as |row|}}
+      <HoldingRow @rowData={{row}} />
+    {{else}}
+      Your filters did not return any results
+    {{/each}}
+  </tbody>
 </table>
