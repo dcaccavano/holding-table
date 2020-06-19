@@ -12,6 +12,22 @@ const selectFilters = [
   "Quality",
 ];
 
+const rangeFilters = [
+  "Par Value",
+  "Maturity",
+  "Market Value",
+  "Coupon",
+  "Accrued",
+  "Weight",
+  "Yield",
+  "Dur",
+  "Cov",
+  "OAS",
+  "Sprd Dur",
+  "PD",
+  "Price",
+];
+
 export default class TableFilterComponent extends Component {
   get isTextFilter() {
     return R.contains(this.args.filter)(textFilters);

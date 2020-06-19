@@ -10,7 +10,7 @@ export default class HoldingTableComponent extends Component {
   // as one of the columns
   @tracked filteredHoldings = R.init(this.args.data);
   @tracked filters = [];
-  // remove currnency from filters since they are all 'USD'
+  // remove currency from filters since they are all 'USD'
   @tracked filterableColumns = R.without(
     ["Currency"]
   )(this.args.data.columns);
@@ -56,6 +56,15 @@ export default class HoldingTableComponent extends Component {
             holding => holding[filter.filterName] === filter.filterValue
           )(_tempResults)
           break;
+        // for ranged based filters, make sure the given result falls between the
+        // supplied range
+        case 'range':
+          _tempResults = R.filter(
+            holding =>
+              parseFloat(holding[filter.filterName]) >= (filter.filterValue[0] ? filter.filterValue[0] : -10)
+              && parseFloat(holding[filter.filterName]) <= (filter.filterValue[1] ? filter.filterValue[1] : 150000)
+          )(_tempResults)
+            break;
         default:
           _tempResults = this.args.data;
       }

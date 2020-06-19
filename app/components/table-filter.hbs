@@ -8,4 +8,7 @@
   {{#if this.isSelectFilter}}
     <SelectFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
   {{/if}}
+  {{#if this.isRangeFilter}}
+    <RangeFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
+  {{/if}}
 </div>

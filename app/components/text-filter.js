@@ -2,9 +2,6 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { debounce } from '@ember/runloop';
 
-// Using ramda for utility functions
-import R from 'ramda';
-
 export default class TextFilterComponent extends Component {
 
   @action
