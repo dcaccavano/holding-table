@@ -1,10 +1,13 @@
-<TableSort
-  @sortableColumns={{this.filterableColumns}}
-  @sortTable={{this.sortTable}}
-/>
-{{#each this.filterableColumns as |filter|}}
-  <TableFilter @filter={{filter}} @addFilter={{this.addFilter}}/>
-{{/each}}
+<aside>
+  <TableSort
+    @sortableColumns={{this.filterableColumns}}
+    @sortTable={{this.sortTable}}
+  />
+  {{#each this.filterableColumns as |filter|}}
+    <TableFilter @filter={{filter}} @addFilter={{this.addFilter}}/>
+  {{/each}}
+</aside>
+
 <div class="container">
   <table>
     <HoldingHeader @headerData={{@data.columns}} />

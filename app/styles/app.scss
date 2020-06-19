@@ -1,9 +1,16 @@
+$primaryColor: #264653;
+$secondaryColor: #189386;
+
+$boxShadow: 1px 4px 4px rgba(0,0,0,0.1);
+$borderRadius: .25rem;
+
 body {
   background: #ddd;
   font-family: 'Ubuntu', sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.25rem;
+  color: #111;
 }
 
 .container {
@@ -11,8 +18,8 @@ body {
   margin: 40px auto;
   background: #fff;
   box-sizing: border-box;
-  border-radius: .25rem;
-  box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
   max-height: calc(100vh - 80px);
   overflow: scroll;
   position: relative;
@@ -38,7 +45,7 @@ table {
         left: 0;
         z-index: 1;
         background: #fff;
-        box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+        box-shadow: $boxShadow;
       }
     }
     th {
@@ -47,7 +54,7 @@ table {
       position: -webkit-sticky; /* for Safari */
       position: sticky;
       top: 0;
-      background: #189386;
+      background: $secondaryColor;
       color: #fff;
       z-index: 1;
 
@@ -57,12 +64,59 @@ table {
         position: sticky;
         left: 0;
         z-index: 2;
-        background: #264653;
-        box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+        background: $primaryColor;
+        box-shadow: $boxShadow;
       }
     }
     &:nth-child(even) {
       background: whitesmoke;
     }
+  }
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #fff;
+  height: 100vh;
+  overflow: auto;
+  z-index: 3;
+  box-sizing: border-box;
+  padding: 1rem;
+  width: 260px;
+}
+
+.inputWrapper {
+  margin-bottom: 1rem;
+  label {
+    display: block;
+    font-size: .75rem;
+    font-weight: 400;
+    margin-bottom: .25rem;
+  }
+}
+
+.rangeFilterWrapper {
+  display: flex;
+  align-items: center;
+  span {
+    font-size: .75rem;
+    font-weight: 400;
+    margin: 0 .25rem;
+  }
+}
+
+input, select {
+  color: #6e6d7a;
+  background: rgba($primaryColor, 0.1);
+  padding: .5rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: $borderRadius;
+  border: none;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px $secondaryColor;
   }
 }
