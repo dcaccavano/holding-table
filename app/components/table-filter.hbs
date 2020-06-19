@@ -1,0 +1,8 @@
+<div>
+  <label>
+    {{@filter}}
+  </label>
+  {{#if this.isTextFilter}}
+    <TextFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
+  {{/if}}
+</div>
