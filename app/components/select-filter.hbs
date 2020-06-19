@@ -1,4 +1,7 @@
-<select {{on "input" (fn this.filterResults)}}>
+<select
+  value={{this.filterValue}}
+  {{on "input" (fn this.filterResults)}}
+>
   {{#if this.isQuality}}
     {{#each this.uniqQualities as |quality|}}
       <option value={{quality}}>{{quality}}</option>
@@ -10,3 +13,6 @@
     {{/each}}
   {{/if}}
 </select>
+<button class="filterRemoveButton"{{on "click" (fn this.removeFilter)}}>
+  remove
+</button>

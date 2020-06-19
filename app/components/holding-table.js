@@ -35,7 +35,6 @@ export default class HoldingTableComponent extends Component {
   // removing last row from data, it is just an empty row that has the source
   // as one of the columns
   @tracked filteredHoldings = R.init(this.args.data);
-  @tracked filters = [];
   // remove currency from filters since they are all 'USD'
   @tracked filterableColumns = R.without(
     ["Currency"]
@@ -47,24 +46,13 @@ export default class HoldingTableComponent extends Component {
     return this.filteredHoldings = tableSorter({ direction, name, isNumber: isNumber(name)})(this.filteredHoldings)
   }
 
-  // adds the filters to the existing filters (if any) and filters down the results
-  // this is called on change (with debounce) on any filter input
+  // when the filters object changes, this is called and the table is re-filtererd
   @action
-  addFilter(newFilter) {
-    // find the existing filter if there is one.
-    const existingFilter = R.find(R.propEq('filterName', newFilter['filterName']))(this.filters)
-
-    // if there is an existing filter, remove it, before adding this new filter
-    if (existingFilter) {
-      this.filters = [...R.without([existingFilter])(this.filters), newFilter];
-    // otherwise, add this newFilter to the array of existing filters
-    } else {
-      this.filters = [...this.filters, newFilter];
-    }
+  onFilterAdded(filters) {
 
     let _tempResults = R.init(this.args.data);
 
-    this.filters.forEach((filter, i) => {
+    filters.forEach((filter, i) => {
       switch (filter.filterType) {
         // for text based filters, see if the string contains the input value
         case 'text':

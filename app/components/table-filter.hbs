@@ -3,12 +3,24 @@
     {{@filter}}
   </label>
   {{#if this.isTextFilter}}
-    <TextFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
+    <TextFilter
+      @filterName={{@filter}}
+      @addFilter={{@addFilter}}
+      @onFilterRemoved={{@onFilterRemoved}}
+    />
   {{/if}}
   {{#if this.isSelectFilter}}
-    <SelectFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
+    <SelectFilter
+      @filterName={{@filter}}
+      @addFilter={{@addFilter}}
+      @onFilterRemoved={{@onFilterRemoved}}
+    />
   {{/if}}
   {{#if this.isRangeFilter}}
-    <RangeFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
+    <RangeFilter
+      @filterName={{@filter}}
+      @addFilter={{@addFilter}}
+      @onFilterRemoved={{@onFilterRemoved}}
+    />
   {{/if}}
 </div>

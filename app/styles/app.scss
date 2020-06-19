@@ -21,7 +21,7 @@ body {
   border-radius: $borderRadius;
   box-shadow: $boxShadow;
   max-height: calc(100vh - 80px);
-  overflow: scroll;
+  overflow: auto;
   position: relative;
 }
 

@@ -1,12 +1,7 @@
-<aside>
-  <TableSort
-    @sortableColumns={{this.filterableColumns}}
-    @sortTable={{this.sortTable}}
-  />
-  {{#each this.filterableColumns as |filter|}}
-    <TableFilter @filter={{filter}} @addFilter={{this.addFilter}}/>
-  {{/each}}
-</aside>
+<TableFilters
+  @filterableColumns={{this.filterableColumns}}
+  @onFilterAdded={{this.onFilterAdded}}
+/>
 
 <div class="container">
   <table>

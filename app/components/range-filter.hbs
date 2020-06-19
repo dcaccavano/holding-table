@@ -3,6 +3,7 @@
     min={{this.min1}}
     max={{this.max1}}
     type="number"
+    value={{filterValue1}}
     {{on "input" (fn this.addMinimumRange)}}
   />
   <span>to</span>
@@ -10,6 +11,10 @@
     min={{this.min2}}
     max={{this.max2}}
     type="number"
+    value={{filterValue2}}
     {{on "input" (fn this.addMaximumRange)}}
   />
 </div>
+<button class="filterRemoveButton"{{on "click" (fn this.removeFilter)}}>
+  remove
+</button>

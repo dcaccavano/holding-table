@@ -1,0 +1,18 @@
+<aside>
+  <TableSort
+    @sortableColumns={{this.filterableColumns}}
+    @sortTable={{this.sortTable}}
+  />
+  <select {{on "input" (fn this.onFilterSelected)}}>
+    {{#each this.availableFilters as |filter|}}
+      <option value={{filter}}>{{filter}}</option>
+    {{/each}}
+  </select>
+  {{#each this.filterInputs as |filterInput|}}
+    <TableFilter
+      @filter={{filterInput}}
+      @addFilter={{this.addFilter}}
+      @onFilterRemoved={{this.onFilterRemoved}}
+    />
+  {{/each}}
+</aside>
