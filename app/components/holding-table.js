@@ -5,6 +5,32 @@ import { action } from '@ember/object';
 // Using ramda for utility functions
 import R from 'ramda';
 
+const numberValues = [
+  "Par Value",
+  "Maturity",
+  "Market Value",
+  "Coupon",
+  "Accrued",
+  "Weight",
+  "Yield",
+  "Dur",
+  "Cov",
+  "OAS",
+  "Sprd Dur",
+  "PD",
+  "Price",
+];
+
+const isNumber = value => R.contains(value)(numberValues);
+
+// takes the direction, column, and whether it is a number and sorts accordingly
+const tableSorter = ({ direction, name, isNumber }) => R.sort(
+  (direction === 'descending' ? R.descend : R.ascend)(R.compose(
+    isNumber ? Number.parseFloat : R.toLower,
+    R.prop(name)
+  ))
+)
+
 export default class HoldingTableComponent extends Component {
   // removing last row from data, it is just an empty row that has the source
   // as one of the columns
@@ -17,12 +43,8 @@ export default class HoldingTableComponent extends Component {
 
   // sorts the table by selected column
   @action
-  sortTable(sortable) {
-    this.filteredHoldings = R.sort(
-      sortable.direction === 'descending'
-      ? R.descend(R.prop(sortable.name))
-      : R.ascend(R.prop(sortable.name))
-    )(this.filteredHoldings);
+  sortTable({ direction, name }) {
+    return this.filteredHoldings = tableSorter({ direction, name, isNumber: isNumber(name)})(this.filteredHoldings)
   }
 
   // adds the filters to the existing filters (if any) and filters down the results
