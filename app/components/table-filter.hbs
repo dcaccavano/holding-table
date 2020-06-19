@@ -5,4 +5,7 @@
   {{#if this.isTextFilter}}
     <TextFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
   {{/if}}
+  {{#if this.isSelectFilter}}
+    <SelectFilter @filterName={{@filter}} @addFilter={{@addFilter}}/>
+  {{/if}}
 </div>

@@ -7,6 +7,11 @@ const textFilters = [
   "Description",
 ];
 
+const selectFilters = [
+  "Sector",
+  "Quality",
+];
+
 export default class TableFilterComponent extends Component {
   get isTextFilter() {
     return R.contains(this.args.filter)(textFilters);

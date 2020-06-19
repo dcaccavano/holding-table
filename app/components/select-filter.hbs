@@ -1,0 +1,12 @@
+<select {{on "input" (fn this.filterResults)}}>
+  {{#if this.isQuality}}
+    {{#each this.uniqQualities as |quality|}}
+      <option value={{quality}}>{{quality}}</option>
+    {{/each}}
+  {{/if}}
+  {{#if this.isSector}}
+    {{#each this.uniqSectors as |sector|}}
+      <option value={{sector}}>{{sector}}</option>
+    {{/each}}
+  {{/if}}
+</select>

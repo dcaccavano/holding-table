@@ -50,6 +50,12 @@ export default class HoldingTableComponent extends Component {
             holding => holding[filter.filterName].toLowerCase().includes(filter.filterValue.toLowerCase())
           )(_tempResults)
           break;
+        // for select based filters, make sure there is an exact match
+        case 'select':
+          _tempResults = R.filter(
+            holding => holding[filter.filterName] === filter.filterValue
+          )(_tempResults)
+          break;
         default:
           _tempResults = this.args.data;
       }
