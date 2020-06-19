@@ -1,5 +1,68 @@
+body {
+  background: #ddd;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.container {
+  max-width: calc(100vw - 80px);
+  margin: 40px auto;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: .25rem;
+  box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+  max-height: calc(100vh - 80px);
+  overflow: scroll;
+  position: relative;
+}
+
 table {
-  th:first-child {
-    background: pink;
+  border-spacing: 0px;
+  border-collapse: collapse;
+  width: 100%;
+  thead {
+    box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+  }
+  tr {
+    th, td {
+      padding: .5rem .75rem;
+      white-space: nowrap;
+    }
+    td {
+      // first cell of each row
+      &:first-child {
+        position: -webkit-sticky; /* for Safari */
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: #fff;
+        box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+      }
+    }
+    th {
+      box-sizing: border-box;
+      border: none;
+      position: -webkit-sticky; /* for Safari */
+      position: sticky;
+      top: 0;
+      background: #189386;
+      color: #fff;
+      z-index: 1;
+
+      // first header cell
+      &:first-child {
+        position: -webkit-sticky; /* for Safari */
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: #264653;
+        box-shadow: 1px 4px 4px rgba(0,0,0,0.1);
+      }
+    }
+    &:nth-child(even) {
+      background: whitesmoke;
+    }
   }
 }

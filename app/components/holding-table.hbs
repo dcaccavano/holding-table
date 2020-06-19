@@ -5,13 +5,15 @@
 {{#each this.filterableColumns as |filter|}}
   <TableFilter @filter={{filter}} @addFilter={{this.addFilter}}/>
 {{/each}}
-<table>
-  <HoldingHeader @headerData={{@data.columns}} />
-  <tbody>
-    {{#each this.filteredHoldings as |row|}}
-      <HoldingRow @rowData={{row}} />
-    {{else}}
-      Your filters did not return any results
-    {{/each}}
-  </tbody>
-</table>
+<div class="container">
+  <table>
+    <HoldingHeader @headerData={{@data.columns}} />
+    <tbody>
+      {{#each this.filteredHoldings as |row|}}
+        <HoldingRow @rowData={{row}} />
+      {{else}}
+        Your filters did not return any results
+      {{/each}}
+    </tbody>
+  </table>
+</div>
