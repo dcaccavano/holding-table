@@ -1,0 +1,7 @@
+<th
+  class="{{if isSortingBy "selected"}} {{if isAscending "ascending"}}"
+  {{on "click" (fn this.sort)}}
+>
+  {{@headingName}}
+  <img class="sortDirection" src={{"images/arrow.svg"}}/>
+</th>

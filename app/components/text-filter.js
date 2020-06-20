@@ -5,12 +5,10 @@ import { debounce } from '@ember/runloop';
 
 export default class TextFilterComponent extends Component {
 
-  // @tracked filterValue = this.args.filter.filterValue;
-
   get filterValue() {
     return this.args.filter.filterValue;
   }
-  
+
   @action
   updateFilterValue(e) {
     debounce(this, this.updateFilterDebounced, e, 600);

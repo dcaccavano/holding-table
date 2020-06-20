@@ -117,6 +117,16 @@ table {
       background: $secondaryColor;
       color: #fff;
       z-index: 1;
+      position: relative;
+      padding-right: 1.75rem;
+      cursor: pointer;
+      .sortDirection {
+        width: 12px;
+        display: none;
+        position: absolute;
+        right: 8px;
+        top: 14px;
+      }
 
       // first header cell
       &:first-child {
@@ -126,6 +136,19 @@ table {
         z-index: 2;
         background: $primaryColor;
         box-shadow: $boxShadow;
+      }
+      &.selected {
+        background: #3AAA88;
+        .sortDirection {
+          display: block;
+          transform: rotate(180deg);
+        }
+        &.ascending {
+          .sortDirection {
+            display: block;
+            transform: rotate(0deg);
+          }
+        }
       }
     }
     &:nth-child(even) {
@@ -221,16 +244,5 @@ input, select {
   &:focus {
     outline: none;
     box-shadow: 0 0 0 2px $secondaryColor;
-  }
-}
-
-.tableSort {
-  display: flex;
-  align-items: center;
-  span, select {
-    margin-right: .5rem;
-  }
-  span {
-    white-space: nowrap;
   }
 }

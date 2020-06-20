@@ -34,7 +34,7 @@ const tableSorter = ({ direction, name, isNumber }) => R.sort(
 export default class HoldingTableComponent extends Component {
   // removing last row from data, it is just an empty row that has the source
   // as one of the columns
-  @tracked filteredHoldings = R.init(this.args.data);
+  @tracked filteredHoldings = R.sort(R.ascend(R.prop("Description")))(R.init(this.args.data));
   // remove currency from filters since they are all 'USD'
   @tracked filterableColumns = R.without(
     ["Currency"]

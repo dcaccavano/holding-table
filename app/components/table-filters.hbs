@@ -1,5 +1,4 @@
 <div class="filtersContainer">
-
   <ul class="appliedFilters">
     {{#if this.appliedFilters.length}}
       <li class="appliedFiltersHeader">Filters applied:</li>
@@ -14,11 +13,6 @@
       </li>
     {{/each}}
   </ul>
-
-  <TableSort
-    @sortableColumns={{@filterableColumns}}
-    @sortTable={{@sortTable}}
-  />
   <button class="primaryButton" {{on "click" (fn this.showOptions)}}>
     <img src="/images/filters.svg" />
     <span>Add Filter</span>
@@ -33,9 +27,5 @@
         @updateFilter={{this.updateFilter}}
       />
     {{/each}}
-    {{!-- {{#each this.availableFilters as |filter|}}
-      <li {{on "click" (fn this.onFilterSelected filter)}}>{{filter}}</li>
-    {{/each}} --}}
   </ul>
-
 </div>
