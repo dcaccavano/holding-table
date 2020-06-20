@@ -1,17 +1,24 @@
 <div class="filtersContainer">
 
-  {{!-- <TableSort
+  <ul class="appliedFilters">
+    {{#if this.appliedFilters.length}}
+      <li class="appliedFiltersHeader">Filters applied:</li>
+    {{/if}}
+    {{#each this.appliedFilters as |filter|}}
+      <li class="appliedFilterButton">
+        <span>{{filter.name}}:</span>
+        <span>{{filter.value}}</span>
+        <button {{on "click" (fn this.removeFilter filter)}}>
+          <img src={{"images/close.svg"}}/>
+        </button>
+      </li>
+    {{/each}}
+  </ul>
+
+  <TableSort
     @sortableColumns={{@filterableColumns}}
     @sortTable={{@sortTable}}
-  /> --}}
-  {{!-- <div class="tableFiltersContainer">
-    {{#each this.addedFilters as |filter|}}
-      <div>
-        <span>{{filter.filterName}}:</span>
-        <span>{{filter.filterValue}}</span>
-      </div>
-    {{/each}}
-  </div> --}}
+  />
   <button class="primaryButton" {{on "click" (fn this.showOptions)}}>
     <img src="/images/filters.svg" />
     <span>Add Filter</span>

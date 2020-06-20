@@ -1,7 +1,7 @@
 <thead>
   <tr>
     {{#each @headerData as |headerCell|}}
-      <th>{{headerCell}}</th>
+      <HeaderCell @headingName={{headerCell}} @sortTable={{@sortTable}}/>
     {{/each}}
   </tr>
 </thead>

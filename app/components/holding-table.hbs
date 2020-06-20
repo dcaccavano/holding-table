@@ -6,7 +6,7 @@
 
 <div class="container">
   <table>
-    <HoldingHeader @headerData={{@data.columns}} />
+    <HoldingHeader @headerData={{@data.columns}} @sortTable={{this.sortTable}}/>
     <tbody>
       {{#each this.filteredHoldings as |row|}}
         <HoldingRow @rowData={{row}} />
