@@ -5,39 +5,60 @@ import { action } from '@ember/object';
 // Using ramda for utility functions
 import R from 'ramda';
 
-export default class TableFiltersComponent extends Component {
-  @tracked filterInputs = [];
-  @tracked addedFilters = [];
-  @tracked availableFilters = this.args.filterableColumns;
+const filterTypeMap = {
+  "CUSIP": "text",
+  "Description": "text",
+  "Sector": "select",
+  "Quality": "select",
+  "Par Value": "range",
+  "Maturity": "range",
+  "Market Value": "range",
+  "Coupon": "range",
+  "Accrued": "range",
+  "Weight": "range",
+  "Yield": "range",
+  "Dur": "range",
+  "Cov": "range",
+  "OAS": "range",
+  "Sprd Dur": "range",
+  "PD": "range",
+  "Price": "range",
+};
 
+export default class TableFiltersComponent extends Component {
+
+  @tracked optionsVisible = false;
+
+  @tracked allFilters = R.map(fc => {
+    return {
+      filterName: fc,
+      filterValue: filterTypeMap[fc] === "range" ? [] : "",
+      filterType: filterTypeMap[fc],
+      isNumber: filterTypeMap[fc] === "range",
+    }
+  })(this.args.filterableColumns);
 
   @action
-  onFilterSelected(e) {
-    this.filterInputs = [...this.filterInputs, e.target.value];
-    this.availableFilters = R.without([e.target.value])(this.availableFilters);
+  showOptions() {
+    this.optionsVisible = true;
+  }
+
+  @action
+  hideOptions() {
+    this.optionsVisible = false;
   }
 
   @action
   onFilterRemoved(filterName) {
-    this.filterInputs = R.without([filterName])(this.filterInputs);
-    const filterToRemove = R.find(R.propEq('filterName', filterName))(this.addedFilters);
-    this.addedFilters = R.without([filterToRemove])(this.addedFilters);
-    this.availableFilters = [...this.availableFilters, filterName];
-    this.args.onFilterAdded(this.addedFilters);
+    const filterToRemove = R.find(R.propEq('filterName', filterName))(this.allFilters);
+    filterToRemove.filterValue = '';
+    this.args.onFilterUpdated(this.allFilters);
   }
 
   @action
-  addFilter(newFilter) {
-    // find the existing filter if there is one.
-    const existingFilter = R.find(R.propEq('filterName', newFilter['filterName']))(this.addedFilters);
-
-    // if there is an existing filter, remove it, before adding this new filter
-    if (existingFilter) {
-      this.addedFilters = [...R.without([existingFilter])(this.addedFilters), newFilter];
-    // otherwise, add this newFilter to the array of existing filters
-    } else {
-      this.addedFilters = [...this.addedFilters, newFilter];
-    }
-    this.args.onFilterAdded(this.addedFilters);
+  updateFilter(newFilter) {
+    const existingFilter = R.find(R.propEq('filterName', newFilter['filterName']))(this.allFilters);
+    existingFilter.filterValue = newFilter.filterValue;
+    this.args.onFilterUpdated(this.allFilters);
   }
 };

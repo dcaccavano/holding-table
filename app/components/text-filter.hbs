@@ -1,8 +1,5 @@
 <input
   type="text"
   value={{this.filterValue}}
-  {{on "input" (fn this.filterResults)}}
+  {{on "input" (fn this.updateFilterValue)}}
 />
-<button class="filterRemoveButton"{{on "click" (fn this.removeFilter)}}>
-  remove
-</button>

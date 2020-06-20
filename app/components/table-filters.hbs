@@ -1,18 +1,34 @@
 <div class="filtersContainer">
-  <TableSort
+
+  {{!-- <TableSort
     @sortableColumns={{@filterableColumns}}
     @sortTable={{@sortTable}}
-  />
-  <select {{on "input" (fn this.onFilterSelected)}}>
-    {{#each this.availableFilters as |filter|}}
-      <option value={{filter}}>{{filter}}</option>
+  /> --}}
+  {{!-- <div class="tableFiltersContainer">
+    {{#each this.addedFilters as |filter|}}
+      <div>
+        <span>{{filter.filterName}}:</span>
+        <span>{{filter.filterValue}}</span>
+      </div>
     {{/each}}
-  </select>
-  {{#each this.filterInputs as |filterInput|}}
-    <TableFilter
-      @filter={{filterInput}}
-      @addFilter={{this.addFilter}}
-      @onFilterRemoved={{this.onFilterRemoved}}
-    />
-  {{/each}}
+  </div> --}}
+  <button class="primaryButton" {{on "click" (fn this.showOptions)}}>
+    <img src="/images/filters.svg" />
+    <span>Add Filter</span>
+  </button>
+  {{#if this.optionsVisible}}
+    <div class="shade" {{on "click" (fn this.hideOptions)}}></div>
+  {{/if}}
+  <ul class="slideOutMenu {{if this.optionsVisible "visible"}}">
+    {{#each this.allFilters as |filter|}}
+      <TableFilter
+        @filter={{filter}}
+        @updateFilter={{this.updateFilter}}
+      />
+    {{/each}}
+    {{!-- {{#each this.availableFilters as |filter|}}
+      <li {{on "click" (fn this.onFilterSelected filter)}}>{{filter}}</li>
+    {{/each}} --}}
+  </ul>
+
 </div>

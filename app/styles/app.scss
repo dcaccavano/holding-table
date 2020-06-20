@@ -1,8 +1,66 @@
 $primaryColor: #264653;
 $secondaryColor: #189386;
+$buttonColor: #e76f51;
 
-$boxShadow: 1px 4px 4px rgba(0,0,0,0.1);
+$boxShadow: 2px 2px 4px rgba(0,0,0,0.1);
 $borderRadius: .25rem;
+
+button.primaryButton {
+  background: $buttonColor;
+  color: #fff;
+  border: none;
+  border-radius: $borderRadius;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: .5rem 1.25rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+  img {
+    display: block;
+    height: 1rem;
+    margin-right: .5rem;
+  }
+  span {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-weight: 400;
+  }
+  &:hover {
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.slideOutMenu {
+  position: fixed;
+  z-index: 5;
+  width: 240px;
+  height: 100vh;
+  overflow: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: right 0.3s ease-in-out;
+  right: -240px;
+  top: 0;
+  background: #fff;
+  margin: 0;
+  &.visible {
+    right: 0px;
+  }
+}
+
+.shade {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background: rgba(0,0,0,0.3);
+}
 
 body {
   background: #ddd;
@@ -84,6 +142,13 @@ table {
   border-radius: $borderRadius;
   box-shadow: $boxShadow;
   padding: 1rem;
+  .tableFiltersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    margin-right: 1rem;
+  }
 }
 
 .inputWrapper {
