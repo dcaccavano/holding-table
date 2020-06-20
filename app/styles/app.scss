@@ -20,7 +20,7 @@ body {
   box-sizing: border-box;
   border-radius: $borderRadius;
   box-shadow: $boxShadow;
-  max-height: calc(100vh - 80px);
+  max-height: calc(100vh - 192px);
   overflow: auto;
   position: relative;
 }
@@ -74,17 +74,16 @@ table {
   }
 }
 
-aside {
-  position: fixed;
-  top: 0;
-  right: 0;
+.filtersContainer {
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 80px);
+  margin: 40px auto;
   background: #fff;
-  height: 100vh;
-  overflow: auto;
-  z-index: 3;
   box-sizing: border-box;
+  border-radius: $borderRadius;
+  box-shadow: $boxShadow;
   padding: 1rem;
-  width: 260px;
 }
 
 .inputWrapper {

@@ -1,7 +1,7 @@
-<aside>
+<div class="filtersContainer">
   <TableSort
-    @sortableColumns={{this.filterableColumns}}
-    @sortTable={{this.sortTable}}
+    @sortableColumns={{@filterableColumns}}
+    @sortTable={{@sortTable}}
   />
   <select {{on "input" (fn this.onFilterSelected)}}>
     {{#each this.availableFilters as |filter|}}
@@ -15,4 +15,4 @@
       @onFilterRemoved={{this.onFilterRemoved}}
     />
   {{/each}}
-</aside>
+</div>
