@@ -1,28 +1,28 @@
-<div class="filtersContainer">
-  <ul class="appliedFilters">
-    <li class="appliedFiltersHeader">{{@resultsCount}} Results Found</li>
+<div class="fixed top-0 left-0 w-screen h-16 bg-white shadow-md border-box flex items-center justify-start pt-4 pb-4">
+  <ul class="flex-grow ml-4 mr-4 flex justify-start space-x-2 items-center">
+    <li>{{@resultsCount}} Results Found</li>
     {{#each this.appliedFilters as |filter|}}
-      <li class="appliedFilterButton">
-        <span>{{filter.name}}:</span>
+      <li class="bg-gray-600 text-white pt-1 pb-1 pr-3 pl-3 rounded-full text-xs flex">
+        <span class="mr-1">{{filter.name}}:</span>
         <span>{{filter.value}}</span>
         <button {{on "click" (fn this.removeFilter filter)}}>
-          <img src={{"images/close.svg"}}/>
+          <img class="h-2 ml-2" src={{"images/close.svg"}}/>
         </button>
       </li>
     {{/each}}
   </ul>
-  <button class="primaryButton addFiltersButton" {{on "click" (fn this.showOptions)}}>
-    <img src="/images/filters.svg" />
+  <button class="bg-red-500 mr-4 text-white flex items-center justify-around pt-2 pb-2 pr-4 pl-4 rounded hover:shadow-md" {{on "click" (fn this.showOptions)}}>
+    <img class="h-4 mr-2" src="/images/filters.svg" />
     <span>Add Filter</span>
   </button>
   {{#if this.optionsVisible}}
-    <div class="shade" {{on "click" (fn this.hideOptions)}}></div>
+    <div class="fixed bg-black opacity-50 top-0 left-0 w-screen h-screen" {{on "click" (fn this.hideOptions)}}></div>
   {{/if}}
-  <ul class="slideOutMenu {{if this.optionsVisible "visible"}}">
-    <li class="slideOutHeader">
-      <h2>Available Filters</h2>
+  <ul class="overflow-auto sideBar fixed h-screen w-64 top-0 bg-white {{if this.optionsVisible "sideBarVisible"}}">
+    <li class="bg-gray-900 text-white flex items-center justify-between p-4 h-16">
+      <h2 class="text-xl" >Available Filters</h2>
       <button {{on "click" (fn this.hideOptions)}}>
-        <img src={{"images/close.svg"}}/>
+        <img class="h-4" src={{"images/close.svg"}}/>
       </button>
     </li>
     {{#each this.allFilters as |filter|}}

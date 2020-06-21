@@ -1,0 +1,16 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+@import "components.css";
+
+@import "tailwindcss/utilities";
+@import "utilities.css";
+
+.sideBar {
+  right: -16rem;
+  transition: right 0.3s ease-in-out;
+}
+
+.sideBarVisible {
+  @apply right-0;
+}

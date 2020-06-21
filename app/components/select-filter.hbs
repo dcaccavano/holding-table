@@ -1,4 +1,5 @@
 <select
+  class="bg-gray-200 rounded pt-2 pb-2 pr-4 pl-4 border-box w-full"
   id="inputFilter_{{@filter.filterName}}"
   value={{this.filterValue}}
   {{on "input" (fn this.updateFilterValue)}}
