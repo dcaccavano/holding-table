@@ -4,6 +4,7 @@ import { action } from '@ember/object';
 
 // Using ramda for utility functions
 import R from 'ramda';
+import $ from 'jquery'
 
 const filterTypeMap = {
   "CUSIP": "text",
@@ -53,7 +54,19 @@ export default class TableFiltersComponent extends Component {
   @action
   removeFilter(filter) {
     let filterToRemove = R.find(R.propEq('filterName', filter.name))(this.allFilters);
-    filterToRemove.filterValue = '';
+    if (filterToRemove.filterType === 'range') {
+      filterToRemove.filterValue = [];
+      // hack :( to get the input to clear, I ran into my limits of understanding
+      // how to clear this out any other way
+      $("#inputFilter_" + filter.name + "_0").val('');
+      $("#inputFilter_" + filter.name + "_1").val('');
+    } else {
+      filterToRemove.filterValue = '';
+      // hack :( to get the input to clear, I ran into my limits of understanding
+      // how to clear this out any other way
+      $("#inputFilter_" + filter.name).val('');
+    }
+
 
     this.removeAppliedFilter(filter.name);
     this.args.onFilterUpdated(this.allFilters);

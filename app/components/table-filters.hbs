@@ -26,6 +26,8 @@
       </button>
     </li>
     {{#each this.allFilters as |filter|}}
+      {{#if isTextFilter}}
+      {{/if}}
       <TableFilter
         @filter={{filter}}
         @updateFilter={{this.updateFilter}}

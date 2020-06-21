@@ -1,5 +1,6 @@
 <input
   type="text"
+  id="inputFilter_{{@filter.filterName}}"
   value={{this.filterValue}}
   {{on "input" (fn this.updateFilterValue)}}
 />

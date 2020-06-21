@@ -1,7 +1,9 @@
 <select
+  id="inputFilter_{{@filter.filterName}}"
   value={{this.filterValue}}
   {{on "input" (fn this.updateFilterValue)}}
 >
+  <option value=""></option>
   {{#if this.isQuality}}
     {{#each this.uniqQualities as |quality|}}
       <option value={{quality}}>{{quality}}</option>
