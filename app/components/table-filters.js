@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 
 // Using ramda for utility functions
 import R from 'ramda';
-import $ from 'jquery'
+import $ from 'jquery';
 
 const filterTypeMap = {
   "CUSIP": "text",
@@ -37,18 +37,18 @@ export default class TableFiltersComponent extends Component {
       filterValue: filterTypeMap[fc] === "range" ? [] : "",
       filterType: filterTypeMap[fc],
       isNumber: filterTypeMap[fc] === "range",
-    }
+    };
   })(this.args.filterableColumns);
 
   @action
   showOptions() {
     this.optionsVisible = true;
-  }
+  };
 
   @action
   hideOptions() {
     this.optionsVisible = false;
-  }
+  };
 
   // called from the appliedFilterButton in the header, removes the applied filter and associated value
   @action
@@ -58,8 +58,8 @@ export default class TableFiltersComponent extends Component {
       filterToRemove.filterValue = [];
       // hack :( to get the input to clear, I ran into my limits of understanding
       // how to clear this out any other way
-      $("#inputFilter_" + filter.name + "_0").val('');
-      $("#inputFilter_" + filter.name + "_1").val('');
+      $("#inputFilter_" + filter.name.split(' ').join('_') + "_0").val('');
+      $("#inputFilter_" + filter.name.split(' ').join('_') + "_1").val('');
     } else {
       filterToRemove.filterValue = '';
       // hack :( to get the input to clear, I ran into my limits of understanding
@@ -70,17 +70,19 @@ export default class TableFiltersComponent extends Component {
 
     this.removeAppliedFilter(filter.name);
     this.args.onFilterUpdated(this.allFilters);
-  }
+  };
 
   @action removeAppliedFilter(filterName) {
     let existingAppliedFilter = R.find(R.propEq('name', filterName))(this.appliedFilters);
     this.appliedFilters = R.without([existingAppliedFilter])(this.appliedFilters);
-  }
+    return this.appliedFilters;
+  };
 
   @action
   updateAppliedFilters(newFilter) {
     let existingAppliedFilter = R.find(R.propEq('name', newFilter['filterName']))(this.appliedFilters);
     this.appliedFilters = [...R.without([existingAppliedFilter])(this.appliedFilters), { name: newFilter.filterName, value: newFilter.filterValue }]
+    return this.appliedFilters;
   };
 
   @action
@@ -93,6 +95,7 @@ export default class TableFiltersComponent extends Component {
     } else {
       this.updateAppliedFilters(newFilter);
     }
+
     this.args.onFilterUpdated(this.allFilters);
   }
 };

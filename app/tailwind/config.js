@@ -18,6 +18,11 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      primary: '#264653',
+      secondary: '#189386',
+      hover: '#3AAA88',
+      button: '#e76f51',
+
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',

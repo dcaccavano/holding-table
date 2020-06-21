@@ -7,7 +7,7 @@ export default class TextFilterComponent extends Component {
 
   get filterValue() {
     return this.args.filter.filterValue;
-  }
+  };
 
   @action
   updateFilterValue(e) {

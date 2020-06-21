@@ -1,7 +1,7 @@
 <th
-  class="{{if isSortingBy "selected"}} {{if isAscending "ascending"}}"
+  class="bg-secondary text-white py-1 px-3 whitespace-no-wrap sticky top-0 pr-6 cursor-pointer hover:bg-hover {{if isSortingBy "selected"}} {{if isAscending "ascending"}}"
   {{on "click" (fn this.sort)}}
 >
   {{@headingName}}
-  <img class="sortDirection" src={{"images/arrow.svg"}}/>
+  <img class="sortDirection h-2 absolute" src={{"images/arrow.svg"}}/>
 </th>

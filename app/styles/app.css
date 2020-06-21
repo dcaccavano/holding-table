@@ -6,6 +6,22 @@
 @import "tailwindcss/utilities";
 @import "utilities.css";
 
+/* styles I couldn't figure out how to do with tailwind :( */
+/* calc() was problematic */
+.mainContainer {
+  max-width: calc(100vw - 4rem);
+  margin: 6rem auto 2rem auto;
+  max-height: calc(100vh - 8rem);
+}
+
+.emptyState {
+  width: 300px;
+  top: 30%;
+  left: 50%;
+  margin-left: -150px;
+}
+
+/* sidebar conditional classes slide out transition */
 .sideBar {
   right: -16rem;
   transition: right 0.3s ease-in-out;
@@ -13,4 +29,69 @@
 
 .sideBarVisible {
   @apply right-0;
+}
+
+/* table border-spacing */
+table {
+  border-spacing: color0px;
+}
+
+/* anything first, last, nth child did not work with tailwind */
+tr:nth-child(even) {
+  background: whitesmoke;
+}
+
+th .sortDirection {
+  display: none;
+  top: 12px;
+  right: 8px;
+}
+
+th {
+  z-index: 11;
+}
+
+/* first cell of the header */
+th:first-child {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  left: 0;
+  @apply bg-primary;
+  @apply shadow;
+  z-index: 13;
+}
+
+th.selected {
+  @apply bg-hover;
+}
+
+th.selected:after {
+  content: "";
+  @apply bg-hover;
+  position: absolute;
+  height: calc(100vh - 100px);
+  width: 100%;
+  opacity: 0.1;
+  top: 32px;
+  left: 0px;
+}
+
+th.selected .sortDirection {
+  display: block;
+  transform: rotate(180deg);
+}
+
+th.selected.ascending .sortDirection {
+  display: block;
+  transform: rotate(0deg);
+}
+
+/* tfirst cell in each row */
+td:first-child {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  left: 0;
+  background: #fff;
+  @apply shadow;
+  z-index: 12;
 }

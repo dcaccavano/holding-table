@@ -29,7 +29,7 @@ const tableSorter = ({ direction, name, isNumber }) => R.sort(
     isNumber ? Number.parseFloat : R.toLower,
     R.prop(name)
   ))
-)
+);
 
 export default class HoldingTableComponent extends Component {
 
@@ -43,13 +43,13 @@ export default class HoldingTableComponent extends Component {
 
   get resultsCount() {
     return this.filteredHoldings.length;
-  }
+  };
 
   // sorts the table by selected column
   @action
   sortTable({ direction, name }) {
-    return this.filteredHoldings = tableSorter({ direction, name, isNumber: isNumber(name)})(this.filteredHoldings)
-  }
+    return this.filteredHoldings = tableSorter({ direction, name, isNumber: isNumber(name)})(this.filteredHoldings);
+  };
 
   // when the filters object changes, this is called and the table is re-filtererd
   @action

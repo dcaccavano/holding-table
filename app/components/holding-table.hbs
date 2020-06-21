@@ -5,17 +5,14 @@
   @resultsCount={{this.resultsCount}}
 />
 
-{{#if this.loading}}
-  <div class="loading">loading</div>
-{{/if}}
-<div class="container">
-  <table>
+<div class="z-10 mainContainer rounded shadow-md overflow-auto border-box bg-white relative">
+  <table class="w-full border-collapse">
     <HoldingHeader @headerData={{@data.columns}} @sortTable={{this.sortTable}}/>
     <tbody>
       {{#each this.filteredHoldings as |row|}}
         <HoldingRow @rowData={{row}} />
       {{else}}
-        Your filters did not return any results
+        <div class="emptyState p-4 fixed text-gray-800 text-center rounded h-auto bg-white bg-white shadow-md">Your filters did not return any results</div>
       {{/each}}
     </tbody>
   </table>

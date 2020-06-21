@@ -1,7 +1,7 @@
 <div class="flex items-center justify-between space-x-2">
   <input
     class="bg-gray-200 rounded pt-2 pb-2 pr-4 pl-4 border-box w-full"
-    id="inputFilter_{{@filter.filterName}}_0"
+    id="inputFilter_{{this.idFriendlyName}}_0"
     min={{this.min1}}
     max={{this.max1}}
     type="number"
@@ -11,7 +11,7 @@
   <span class="block text-sm">to</span>
   <input
     class="bg-gray-200 rounded pt-2 pb-2 pr-4 pl-4 border-box w-full"
-    id="inputFilter_{{@filter.filterName}}_1"
+    id="inputFilter_{{this.idFriendlyName}}_1"
     min={{this.min2}}
     max={{this.max2}}
     type="number"

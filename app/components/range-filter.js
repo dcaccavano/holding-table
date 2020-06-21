@@ -13,6 +13,10 @@ export default class RangeFilterComponent extends Component {
   @tracked filterValue1 = this.args.filter.filterValue[0];
   @tracked filterValue2 = this.args.filter.filterValue[1];
 
+  get idFriendlyName() {
+    return this.args.filter.filterName.split(' ').join('_');
+  };
+
   @action
   // when setting the minimum, make sure the maximum is adjusted so it does not go below
   addMinimumRange(e) {

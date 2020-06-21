@@ -1,5 +1,5 @@
-<div class="fixed top-0 left-0 w-screen h-16 bg-white shadow-md border-box flex items-center justify-start pt-4 pb-4">
-  <ul class="flex-grow ml-4 mr-4 flex justify-start space-x-2 items-center">
+<div class="z-20 fixed top-0 left-0 w-screen h-16 bg-white shadow-md border-box flex items-center justify-start pt-4 pb-4">
+  <ul class="flex-grow ml-8 mr-4 flex justify-start space-x-2 items-center">
     <li>{{@resultsCount}} Results Found</li>
     {{#each this.appliedFilters as |filter|}}
       <li class="bg-gray-600 text-white pt-1 pb-1 pr-3 pl-3 rounded-full text-xs flex">
@@ -11,7 +11,7 @@
       </li>
     {{/each}}
   </ul>
-  <button class="bg-red-500 mr-4 text-white flex items-center justify-around pt-2 pb-2 pr-4 pl-4 rounded hover:shadow-md" {{on "click" (fn this.showOptions)}}>
+  <button class="bg-red-500 mr-8 text-white flex items-center justify-around pt-2 pb-2 pr-4 pl-4 rounded hover:shadow-md" {{on "click" (fn this.showOptions)}}>
     <img class="h-4 mr-2" src="/images/filters.svg" />
     <span>Add Filter</span>
   </button>
