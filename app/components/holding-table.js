@@ -32,6 +32,7 @@ const tableSorter = ({ direction, name, isNumber }) => R.sort(
 )
 
 export default class HoldingTableComponent extends Component {
+
   // removing last row from data, it is just an empty row that has the source
   // as one of the columns
   @tracked filteredHoldings = R.sort(R.ascend(R.prop("Description")))(R.init(this.args.data));
@@ -39,6 +40,10 @@ export default class HoldingTableComponent extends Component {
   @tracked filterableColumns = R.without(
     ["Currency"]
   )(this.args.data.columns);
+
+  get resultsCount() {
+    return this.filteredHoldings.length;
+  }
 
   // sorts the table by selected column
   @action
@@ -49,7 +54,6 @@ export default class HoldingTableComponent extends Component {
   // when the filters object changes, this is called and the table is re-filtererd
   @action
   onFilterUpdated(filters) {
-
     let _tempResults = R.init(this.args.data);
 
     filters.forEach((filter, i) => {
@@ -81,6 +85,7 @@ export default class HoldingTableComponent extends Component {
         }
       }
     });
+
     // return all the filtered results combined
     return this.filteredHoldings = _tempResults;
   };

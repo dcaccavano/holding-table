@@ -2,8 +2,12 @@
   @filterableColumns={{this.filterableColumns}}
   @onFilterUpdated={{this.onFilterUpdated}}
   @sortTable={{this.sortTable}}
+  @resultsCount={{this.resultsCount}}
 />
 
+{{#if this.loading}}
+  <div class="loading">loading</div>
+{{/if}}
 <div class="container">
   <table>
     <HoldingHeader @headerData={{@data.columns}} @sortTable={{this.sortTable}}/>

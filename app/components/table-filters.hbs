@@ -1,8 +1,6 @@
 <div class="filtersContainer">
   <ul class="appliedFilters">
-    {{#if this.appliedFilters.length}}
-      <li class="appliedFiltersHeader">Filters applied:</li>
-    {{/if}}
+    <li class="appliedFiltersHeader">{{@resultsCount}} Results Found</li>
     {{#each this.appliedFilters as |filter|}}
       <li class="appliedFilterButton">
         <span>{{filter.name}}:</span>
@@ -13,7 +11,7 @@
       </li>
     {{/each}}
   </ul>
-  <button class="primaryButton" {{on "click" (fn this.showOptions)}}>
+  <button class="primaryButton addFiltersButton" {{on "click" (fn this.showOptions)}}>
     <img src="/images/filters.svg" />
     <span>Add Filter</span>
   </button>
@@ -21,6 +19,12 @@
     <div class="shade" {{on "click" (fn this.hideOptions)}}></div>
   {{/if}}
   <ul class="slideOutMenu {{if this.optionsVisible "visible"}}">
+    <li class="slideOutHeader">
+      <h2>Available Filters</h2>
+      <button {{on "click" (fn this.hideOptions)}}>
+        <img src={{"images/close.svg"}}/>
+      </button>
+    </li>
     {{#each this.allFilters as |filter|}}
       <TableFilter
         @filter={{filter}}
