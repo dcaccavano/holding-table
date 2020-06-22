@@ -19,8 +19,8 @@ export default class RangeFilterComponent extends Component {
     return this.args.filter.filterName.split(' ').join('_');
   };
 
-  @action
   // when setting the minimum, make sure the maximum is adjusted so it does not go below
+  @action
   addMinimumRange(e) {
     if (R.isEmpty(e.target.value)) {
       this.min2 = -10;
@@ -42,8 +42,8 @@ export default class RangeFilterComponent extends Component {
     };;
   };
 
-  @action
   // when setting the maximum, make sure the mimimum is adjusted so it does not go above
+  @action
   addMaximumRange(e) {
     if (R.isEmpty(e.target.value)) {
       this.max1 = 150000;

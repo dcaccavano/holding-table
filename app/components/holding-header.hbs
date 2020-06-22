@@ -3,8 +3,8 @@
     {{#each @headerData as |headerCell|}}
       <HeaderCell
         @headingName={{headerCell}}
-        @sortBy={{this.sortBy}}
-        @sorter={{this.sorter}}
+        @sortBy={{@sortBy}}
+        @sorter={{@sorter}}
       />
     {{/each}}
   </tr>

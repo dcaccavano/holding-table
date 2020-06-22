@@ -29,8 +29,12 @@ const filterTypeMap = {
 export default class TableFiltersComponent extends Component {
 
   @tracked optionsVisible = false;
+  // small pill buttons that show the name and value of each filter being used
+  // at the top of the screen
   @tracked appliedFilters = [];
 
+  // initalizes all the filters with empty results, will be updated on any
+  // filter input
   @tracked allFilters = R.map(fc => {
     return {
       filterName: fc,
@@ -67,7 +71,6 @@ export default class TableFiltersComponent extends Component {
       $("#inputFilter_" + filter.name).val('');
     }
 
-
     this.removeAppliedFilter(filter.name);
     this.args.onFilterUpdated(this.allFilters);
   };
@@ -85,6 +88,7 @@ export default class TableFiltersComponent extends Component {
     return this.appliedFilters;
   };
 
+  // called when a filter input is filled in
   @action
   updateFilter(newFilter) {
     let existingFilter = R.find(R.propEq('filterName', newFilter['filterName']))(this.allFilters);
@@ -96,6 +100,7 @@ export default class TableFiltersComponent extends Component {
       this.updateAppliedFilters(newFilter);
     }
 
+    // call back up to the holding-table parent to re-filter the table
     this.args.onFilterUpdated(this.allFilters);
   }
 };

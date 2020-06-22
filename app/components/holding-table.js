@@ -41,9 +41,19 @@ export default class HoldingTableComponent extends Component {
     ["Currency"]
   )(this.args.data.columns);
 
+  @tracked sorter = {name: "Description", direction: "ascending"};
+
   get resultsCount() {
     return this.filteredHoldings.length;
   };
+
+  // gets passed all the way down the to the header cell, is called when
+  // the header cell is clicked
+  @action
+  sortBy(name) {
+    this.sorter = {name: name, direction: this.sorter.direction === "descending" ? "ascending" : "descending" };
+    this.sortTable(this.sorter);
+  }
 
   // sorts the table by selected column
   @action
@@ -86,7 +96,11 @@ export default class HoldingTableComponent extends Component {
       }
     });
 
-    // return all the filtered results combined
-    return this.filteredHoldings = _tempResults;
+    // set the new holdings
+    this.filteredHoldings = _tempResults;
+    // resort the table with new results
+    this.sortTable(this.sorter);
+    // return the filtered holdings
+    return filteredHoldings;
   };
 };

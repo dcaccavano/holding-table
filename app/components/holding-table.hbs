@@ -7,7 +7,11 @@
 
 <div class="z-10 mainContainer rounded shadow-md overflow-auto border-box bg-white relative">
   <table class="w-full border-collapse">
-    <HoldingHeader @headerData={{@data.columns}} @sortTable={{this.sortTable}}/>
+    <HoldingHeader
+      @headerData={{@data.columns}}
+      @sorter={{this.sorter}}
+      @sortBy={{this.sortBy}}
+    />
     <tbody>
       {{#each this.filteredHoldings as |row|}}
         <HoldingRow @rowData={{row}} />
