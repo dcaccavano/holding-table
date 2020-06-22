@@ -22,6 +22,8 @@ module.exports = {
       secondary: '#189386',
       hover: '#3AAA88',
       button: '#e76f51',
+      error: '#d54309',
+      errorlight: '#f4e3db',
 
       gray: {
         100: '#f7fafc',

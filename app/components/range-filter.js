@@ -22,7 +22,14 @@ export default class RangeFilterComponent extends Component {
   addMinimumRange(e) {
     this.min2 = e.target.value;
     this.filterValue1 = parseFloat(e.target.value);
-    debounce(this, this.updateFilterDebounced, [this.filterValue1, this.filterValue2], 600);
+    if (this.filterValue1 && this.filterValue2) {
+      if (this.filterValue1 <= this.filterValue2) {
+        this.args.dismissError();
+        debounce(this, this.updateFilterDebounced, [this.filterValue1, this.filterValue2], 600);
+      } else {
+        this.args.showError('Error: The maximum value must be greater than or equal to the minimum value');
+      };
+    };
   };
 
   @action
@@ -30,7 +37,14 @@ export default class RangeFilterComponent extends Component {
   addMaximumRange(e) {
     this.max1 = e.target.value;
     this.filterValue2 = parseFloat(e.target.value);
-    debounce(this, this.updateFilterDebounced, [this.filterValue1, this.filterValue2], 600);
+    if (this.filterValue1 && this.filterValue2) {
+      if (this.filterValue1 <= this.filterValue2) {
+        this.args.dismissError();
+        debounce(this, this.updateFilterDebounced, [this.filterValue1, this.filterValue2], 600);
+      } else {
+        this.args.showError('Error: The maximum value must be greater than or equal to the minimum value');
+      };
+    };
   };
 
   @action

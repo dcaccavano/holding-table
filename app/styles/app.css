@@ -95,3 +95,12 @@ td:first-child {
   @apply shadow;
   z-index: 12;
 }
+
+.tableFilter.error label {
+  @apply text-error;
+}
+
+.tableFilter.error input {
+  @apply bg-errorlight;
+  @apply text-error;
+}
