@@ -1,7 +1,6 @@
 # holding-table
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This was an interview project for displaying bond holdings in an interesting way, it took me a couple days and was my first major dive into ember octane and tailwindcss.
 
 ## Prerequisites
 
